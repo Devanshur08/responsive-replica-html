@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -139,8 +138,11 @@
     /* Hero Section */
     .hero {
       position: relative;
-      padding: 4rem 1rem;
+      min-height: 90vh;
+      padding: 6rem 1rem 4rem 1rem;
       overflow: hidden;
+      display: flex;
+      align-items: center;
     }
 
     .hero-content {
@@ -252,28 +254,35 @@
 
     /* Bright Future Section */
     .bright-future {
-      padding: 4rem 1rem;
+      padding: 0 1rem;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
     }
 
     .section-title {
       text-align: center;
-      font-size: 2rem;
-      margin-bottom: 1.5rem;
+      font-size: 3rem;
+      margin-top: 4rem;
+      margin-bottom: 4rem; /* Increased from 2.5rem to 4rem for more space */
     }
 
     .section-subtitle {
       text-align: center;
       color: var(--purple-secondary);
       font-weight: 500;
-      margin-bottom: 2.5rem;
+      margin-bottom: 3rem;
+      font-size: 1.3rem;
     }
 
     .feature-grid {
       display: grid;
       grid-template-columns: 1fr;
-      gap: 1.5rem;
+      gap: 2.5rem; /* Increased gap for more space between cards */
       max-width: 1200px;
-      margin: 0 auto;
+      margin: 0 auto 0;
     }
 
     .feature-card {
@@ -318,6 +327,20 @@
     .product-features {
       padding: 4rem 1rem;
       background-color: #f9f9f9;
+    }
+
+    .product-features .section-title,
+    .scalable-business .section-title,
+    .about .section-title,
+    .team .section-title,
+    .testimonials .section-title,
+    .contact .section-title {
+      margin-bottom: 4rem !important; /* Ensure all section titles have more space below */
+    }
+
+    .product-features .feature-grid {
+      margin-top: 0;
+      gap: 2.5rem; /* Match spacing with above */
     }
 
     /* Scalable Business Section */
