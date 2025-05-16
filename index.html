@@ -6,14 +6,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Promptie - Boost Your Project's Speed and Efficiency</title>
   <meta name="description" content="Boost your project's speed and efficiency with Promptie - the ultimate tool for modern teams." />
-  <meta name="author" content="Promptie" />
-  <meta property="og:title" content="Promptie - Boost Your Project's Speed and Efficiency" />
-  <meta property="og:description" content="Boost your project's speed and efficiency with Promptie - the ultimate tool for modern teams." />
-  <meta property="og:type" content="website" />
-  <meta property="og:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:site" content="@lovable_dev" />
-  <meta name="twitter:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
     /* Base styles */
@@ -58,6 +50,7 @@
       position: sticky;
       top: 0;
       z-index: 100;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
     }
 
     .header-container {
@@ -66,6 +59,7 @@
       align-items: center;
       max-width: 1200px;
       margin: 0 auto;
+      padding: 0 1rem;
     }
 
     .logo {
@@ -105,17 +99,71 @@
       background-color: var(--purple-secondary);
     }
 
+    .menu-btn {
+      background: none;
+      border: none;
+      cursor: pointer;
+      display: block;
+      font-size: 1.5rem;
+    }
+
+    @media (min-width: 768px) {
+      nav {
+        display: flex;
+      }
+      
+      .menu-btn {
+        display: none;
+      }
+    }
+
+    /* Mobile Menu */
+    .mobile-menu {
+      display: none;
+      padding: 1rem;
+      background-color: var(--white);
+      border-top: 1px solid #eee;
+    }
+
+    .mobile-menu.active {
+      display: block;
+    }
+
+    .mobile-menu a {
+      display: block;
+      padding: 0.7rem 0;
+      text-decoration: none;
+      color: var(--dark-gray);
+    }
+
     /* Hero Section */
     .hero {
+      position: relative;
       padding: 4rem 1rem;
-      background: linear-gradient(135deg, var(--purple-soft) 0%, var(--purple-light) 100%);
-      min-height: 90vh;
-      display: flex;
-      align-items: center;
+      overflow: hidden;
     }
 
     .hero-content {
-      max-width: 600px;
+      display: flex;
+      flex-direction: column-reverse;
+      max-width: 1200px;
+      margin: 0 auto;
+      gap: 2rem;
+    }
+
+    .hero-text {
+      flex: 1;
+    }
+
+    .hero-badge {
+      display: inline-block;
+      background-color: rgba(214, 188, 250, 0.2);
+      color: var(--purple-secondary);
+      font-size: 0.75rem;
+      font-weight: 600;
+      padding: 0.3rem 0.8rem;
+      border-radius: 100px;
+      margin-bottom: 1.5rem;
     }
 
     .hero h1 {
@@ -127,148 +175,277 @@
     .hero p {
       font-size: 1.1rem;
       margin-bottom: 2rem;
-      color: var(--dark-gray);
-      opacity: 0.9;
+      color: var(--neutral-gray);
     }
 
-    .cta-button {
-      background-color: var(--purple-primary);
-      color: var(--white);
+    .hero-image {
+      flex: 1;
+      position: relative;
+      height: 300px;
+    }
+
+    .blob {
+      position: absolute;
+      width: 300px;
+      height: 300px;
+      background: linear-gradient(to right, var(--purple-primary), var(--purple-light));
+      border-radius: 42% 58% 70% 30% / 45% 45% 55% 55%;
+      animation: blob-animation 8s ease-in-out infinite;
+      opacity: 0.8;
+    }
+
+    .hero-image img {
+      position: absolute;
+      width: 80%;
+      height: auto;
+      top: 20%;
+      left: 10%;
+      border-radius: 8px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+      z-index: 2;
+    }
+
+    @keyframes blob-animation {
+      0% { border-radius: 42% 58% 70% 30% / 45% 45% 55% 55%; }
+      25% { border-radius: 45% 55% 60% 40% / 55% 45% 55% 45%; }
+      50% { border-radius: 50% 50% 50% 50% / 50% 50% 50% 50%; }
+      75% { border-radius: 55% 45% 40% 60% / 45% 55% 45% 55%; }
+      100% { border-radius: 42% 58% 70% 30% / 45% 45% 55% 55%; }
+    }
+
+    .btn {
+      display: inline-block;
       padding: 0.8rem 1.5rem;
       border-radius: var(--radius);
       border: none;
       font-weight: 600;
       font-size: 1rem;
       cursor: pointer;
-      transition: background-color 0.3s;
-      display: inline-block;
+      transition: all 0.3s;
       text-decoration: none;
     }
 
-    .cta-button:hover {
+    .btn-primary {
+      background-color: var(--purple-primary);
+      color: var(--white);
+    }
+
+    .btn-primary:hover {
       background-color: var(--purple-secondary);
     }
 
-    /* Features Section */
-    .section {
+    .btn-outline {
+      background-color: transparent;
+      border: 1px solid #ddd;
+      color: var(--dark-gray);
+    }
+
+    .btn-outline:hover {
+      background-color: #f5f5f5;
+    }
+
+    .hero-buttons {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    /* Bright Future Section */
+    .bright-future {
       padding: 4rem 1rem;
     }
 
     .section-title {
       text-align: center;
       font-size: 2rem;
-      margin-bottom: 3rem;
+      margin-bottom: 1.5rem;
     }
 
-    .features-grid {
+    .section-subtitle {
+      text-align: center;
+      color: var(--purple-secondary);
+      font-weight: 500;
+      margin-bottom: 2.5rem;
+    }
+
+    .feature-grid {
       display: grid;
       grid-template-columns: 1fr;
-      gap: 2rem;
+      gap: 1.5rem;
+      max-width: 1200px;
+      margin: 0 auto;
     }
 
     .feature-card {
       background-color: var(--white);
       border-radius: var(--radius);
-      padding: 2rem;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+      padding: 1.5rem;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
       transition: transform 0.3s, box-shadow 0.3s;
     }
 
     .feature-card:hover {
       transform: translateY(-5px);
-      box-shadow: 0 10px 30px rgba(0,0,0,0.15);
-    }
-
-    .feature-icon {
-      background-color: var(--purple-soft);
-      width: 50px;
-      height: 50px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-bottom: 1rem;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.1);
     }
 
     .feature-card h3 {
+      margin-bottom: 0.75rem;
+      font-size: 1.2rem;
+    }
+
+    .feature-card p {
+      color: var(--neutral-gray);
       margin-bottom: 1rem;
     }
 
-    /* About Section */
-    .about-section {
+    .feature-btn {
+      background-color: rgba(214, 188, 250, 0.2);
+      color: var(--purple-secondary);
+      padding: 0.4rem 0.8rem;
+      border-radius: var(--radius);
+      border: none;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .feature-btn:hover {
+      background-color: rgba(214, 188, 250, 0.3);
+    }
+
+    /* Product Features Section */
+    .product-features {
+      padding: 4rem 1rem;
+      background-color: #f9f9f9;
+    }
+
+    /* Scalable Business Section */
+    .scalable-business {
+      padding: 4rem 1rem;
       background-color: var(--purple-soft);
+    }
+
+    /* About Section */
+    .about {
+      padding: 4rem 1rem;
     }
 
     .about-content {
       display: flex;
       flex-direction: column;
-      gap: 2rem;
+      gap: 2.5rem;
+      max-width: 1200px;
+      margin: 0 auto;
     }
 
     .about-image {
-      background-color: var(--purple-light);
-      height: 300px;
-      border-radius: var(--radius);
+      flex: 1;
+      max-height: 400px;
+      overflow: hidden;
+      border-radius: 8px;
+    }
+
+    .about-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
     }
 
     .about-text {
       flex: 1;
     }
 
+    .about-badge {
+      display: inline-block;
+      background-color: rgba(214, 188, 250, 0.2);
+      color: var(--purple-secondary);
+      font-size: 0.75rem;
+      font-weight: 600;
+      padding: 0.3rem 0.8rem;
+      border-radius: 100px;
+      margin-bottom: 1.5rem;
+    }
+
     .about-text h2 {
-      margin-bottom: 1rem;
-      font-size: 1.8rem;
+      font-size: 2rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .about-text p {
+      color: var(--neutral-gray);
+      margin-bottom: 1.5rem;
+    }
+
+    .about-text h2 span {
+      color: var(--purple-primary);
     }
 
     /* Team Section */
+    .team {
+      padding: 4rem 1rem;
+      background-color: #f9f9f9;
+    }
+
     .team-grid {
       display: grid;
       grid-template-columns: 1fr;
-      gap: 2rem;
+      gap: 1.5rem;
+      max-width: 1200px;
+      margin: 0 auto;
     }
 
     .team-member {
       background-color: var(--white);
       border-radius: var(--radius);
       overflow: hidden;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
     }
 
-    .member-image {
+    .team-image {
       height: 200px;
-      background-color: var(--purple-light);
+      background-color: #f0f0f0;
     }
 
-    .member-info {
+    .team-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .team-info {
       padding: 1.5rem;
     }
 
-    .member-info h3 {
+    .team-info h3 {
       margin-bottom: 0.5rem;
     }
 
-    .member-role {
+    .team-role {
       color: var(--purple-secondary);
       font-weight: 500;
       margin-bottom: 1rem;
     }
 
     /* Testimonials Section */
-    .testimonials-section {
+    .testimonials {
+      padding: 4rem 1rem;
       background-color: var(--purple-soft);
     }
 
     .testimonial-slider {
-      display: flex;
-      flex-direction: column;
-      gap: 2rem;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+      max-width: 1200px;
+      margin: 0 auto;
     }
 
     .testimonial-card {
       background-color: var(--white);
       border-radius: var(--radius);
       padding: 2rem;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
     }
 
     .testimonial-text {
@@ -285,8 +462,15 @@
       width: 50px;
       height: 50px;
       border-radius: 50%;
-      background-color: var(--purple-light);
+      background-color: #f0f0f0;
       margin-right: 1rem;
+      overflow: hidden;
+    }
+
+    .author-avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
     }
 
     .author-info {
@@ -303,57 +487,62 @@
     }
 
     /* Contact Section */
+    .contact {
+      padding: 4rem 1rem;
+    }
+
     .contact-container {
       display: flex;
       flex-direction: column;
-      gap: 2rem;
-    }
-
-    .contact-info {
-      flex: 1;
+      gap: 2.5rem;
+      max-width: 1200px;
+      margin: 0 auto;
     }
 
     .contact-form {
       flex: 1;
     }
 
-    .contact-info h3, .contact-form h3 {
+    .contact-image {
+      flex: 1;
+      height: 400px;
+      background: linear-gradient(to bottom right, var(--purple-primary), var(--purple-light));
+      border-radius: var(--radius);
+    }
+
+    .contact-form h2 {
+      font-size: 2rem;
       margin-bottom: 1.5rem;
-      font-size: 1.5rem;
     }
 
-    .contact-info p {
+    .contact-form h2 span {
+      color: var(--purple-primary);
+    }
+
+    .contact-form p {
+      color: var(--neutral-gray);
       margin-bottom: 2rem;
-    }
-
-    .contact-item {
-      display: flex;
-      align-items: center;
-      margin-bottom: 1rem;
-    }
-
-    .contact-icon {
-      width: 40px;
-      height: 40px;
-      background-color: var(--purple-soft);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-right: 1rem;
     }
 
     .form-group {
       margin-bottom: 1.5rem;
     }
 
+    .form-row {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
     .form-group label {
       display: block;
       margin-bottom: 0.5rem;
+      font-size: 0.9rem;
       font-weight: 500;
     }
 
-    .form-group input, .form-group textarea {
+    .form-group input, 
+    .form-group textarea {
       width: 100%;
       padding: 0.8rem;
       border: 1px solid #ddd;
@@ -368,126 +557,198 @@
 
     /* Footer */
     footer {
-      background-color: var(--purple-dark);
-      color: var(--white);
-      padding: 3rem 1rem;
+      background-color: #f5f5f5;
+      padding: 4rem 1rem 2rem;
     }
 
     .footer-container {
       display: grid;
       grid-template-columns: 1fr;
-      gap: 2rem;
+      gap: 2.5rem;
       max-width: 1200px;
       margin: 0 auto;
+    }
+
+    .footer-section h3 {
+      font-size: 1.2rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .footer-section p {
+      color: var(--neutral-gray);
+      margin-bottom: 1.5rem;
     }
 
     .footer-logo {
       font-size: 1.5rem;
       font-weight: 700;
-      margin-bottom: 1.5rem;
-    }
-
-    .footer-section {
-      line-height: 2;
-    }
-
-    .footer-section h3 {
       margin-bottom: 1rem;
-      font-size: 1.2rem;
     }
 
     .footer-links {
       list-style: none;
     }
 
+    .footer-links li {
+      margin-bottom: 0.7rem;
+    }
+
     .footer-links a {
-      color: var(--white);
-      opacity: 0.8;
       text-decoration: none;
-      transition: opacity 0.3s;
+      color: var(--neutral-gray);
+      transition: color 0.3s;
     }
 
     .footer-links a:hover {
-      opacity: 1;
+      color: var(--purple-primary);
+    }
+
+    .newsletter {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .newsletter-input {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .newsletter-input input {
+      padding: 0.8rem;
+      border: 1px solid #ddd;
+      border-radius: var(--radius);
+      font-size: 1rem;
+    }
+
+    .footer-bottom {
+      border-top: 1px solid #ddd;
+      padding-top: 2rem;
+      margin-top: 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      max-width: 1200px;
+      margin: 2rem auto 0;
     }
 
     .copyright {
-      text-align: center;
-      padding: 2rem 0 1rem;
-      color: var(--white);
-      opacity: 0.7;
+      color: var(--neutral-gray);
+      font-size: 0.9rem;
     }
 
-    /* Blob animation */
-    .blob {
-      position: absolute;
-      right: 10%;
-      top: 20%;
-      width: 300px;
-      height: 300px;
-      background: linear-gradient(90deg, var(--purple-primary), var(--purple-light));
-      border-radius: 42% 58% 70% 30% / 45% 45% 55% 55%;
-      animation: blob-animation 8s ease-in-out infinite;
-      opacity: 0.6;
-      z-index: -1;
-      display: none;
+    .social-links {
+      display: flex;
+      gap: 1rem;
     }
 
-    @keyframes blob-animation {
-      0% { border-radius: 42% 58% 70% 30% / 45% 45% 55% 55%; }
-      25% { border-radius: 45% 55% 60% 40% / 55% 45% 55% 45%; }
-      50% { border-radius: 50% 50% 50% 50% / 50% 50% 50% 50%; }
-      75% { border-radius: 55% 45% 40% 60% / 45% 55% 45% 55%; }
-      100% { border-radius: 42% 58% 70% 30% / 45% 45% 55% 55%; }
+    .social-links a {
+      width: 32px;
+      height: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      color: var(--neutral-gray);
+      transition: all 0.3s;
+      text-decoration: none;
     }
 
-    /* Responsive Design */
+    .social-links a:hover {
+      color: var(--purple-primary);
+      background-color: rgba(214, 188, 250, 0.1);
+    }
+
+    /* Responsive Styles */
     @media (min-width: 768px) {
-      nav {
-        display: flex;
+      .hero-content {
+        flex-direction: row;
       }
-      
-      .features-grid {
+
+      .hero h1 {
+        font-size: 3rem;
+      }
+
+      .hero-buttons {
+        flex-direction: row;
+      }
+
+      .feature-grid {
         grid-template-columns: repeat(2, 1fr);
       }
-      
+
+      .about-content {
+        flex-direction: row;
+      }
+
       .team-grid {
         grid-template-columns: repeat(2, 1fr);
       }
-      
+
       .testimonial-slider {
-        flex-direction: row;
+        grid-template-columns: repeat(2, 1fr);
       }
-      
-      .testimonial-card {
-        flex: 1;
-      }
-      
+
       .contact-container {
         flex-direction: row;
       }
-      
-      .footer-container {
-        grid-template-columns: repeat(4, 1fr);
+
+      .form-row {
+        flex-direction: row;
       }
-      
-      .blob {
-        display: block;
+
+      .footer-container {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .footer-bottom {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .newsletter-input {
+        flex-direction: row;
       }
     }
 
     @media (min-width: 1024px) {
-      .features-grid {
-        grid-template-columns: repeat(3, 1fr);
+      .feature-grid {
+        grid-template-columns: repeat(4, 1fr);
       }
-      
+
       .team-grid {
         grid-template-columns: repeat(4, 1fr);
       }
-      
-      .about-content {
-        flex-direction: row;
+
+      .footer-container {
+        grid-template-columns: 2fr 1fr 1fr 1fr;
       }
+    }
+
+    /* Animations */
+    .fade-in {
+      animation: fadeIn 0.5s ease-out;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .hover-scale {
+      transition: transform 0.3s ease;
+    }
+
+    .hover-scale:hover {
+      transform: scale(1.03);
     }
   </style>
 </head>
@@ -502,180 +763,213 @@
         <a href="#about">About Us</a>
         <a href="#contact">Contact</a>
       </nav>
-      <button class="sign-up-btn">Sign Up</button>
+      <div>
+        <button class="sign-up-btn">Sign Up</button>
+        <button class="menu-btn" id="menuButton">☰</button>
+      </div>
+    </div>
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="#home">Home</a>
+      <a href="#features">Features</a>
+      <a href="#about">About Us</a>
+      <a href="#contact">Contact</a>
     </div>
   </header>
 
   <!-- Hero Section -->
   <section class="hero" id="home">
-    <div class="container">
-      <div class="hero-content">
-        <h1>Boost Your Project's Speed and Efficiency</h1>
-        <p>Promptie helps modern teams streamline their workflow, enhance collaboration, and deliver projects faster than ever before.</p>
-        <a href="#contact" class="cta-button">Get Started</a>
+    <div class="hero-content">
+      <div class="hero-text fade-in">
+        <span class="hero-badge">NEW RELEASE 1.0</span>
+        <h1>Boost your project's speed and efficiency.</h1>
+        <p>Track, interact, and delight with your customers at every stage of the journey. Streamline your workflow, enhance collaboration.</p>
+        <div class="hero-buttons">
+          <a href="#contact" class="btn btn-primary">Get Started</a>
+          <a href="#features" class="btn btn-outline">Learn More →</a>
+        </div>
+      </div>
+      <div class="hero-image">
+        <div class="blob"></div>
+        <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=800" alt="People collaborating">
       </div>
     </div>
-    <div class="blob"></div>
   </section>
 
   <!-- Bright Future Section -->
-  <section class="section">
-    <div class="container">
-      <h2 class="section-title">Build a Brighter Future</h2>
-      <p style="text-align: center; max-width: 700px; margin: 0 auto 3rem;">Our platform helps you streamline your operations, improve collaboration, and achieve your goals faster than ever before.</p>
-      <div class="features-grid">
-        <div class="feature-card">
-          <div class="feature-icon">✨</div>
-          <h3>Smart Automation</h3>
-          <p>Automate repetitive tasks and focus on what matters most for your business growth.</p>
-        </div>
-        <div class="feature-card">
-          <div class="feature-icon">🔒</div>
-          <h3>Enterprise Security</h3>
-          <p>Keep your data safe with our enterprise-grade security features and compliance tools.</p>
-        </div>
-        <div class="feature-card">
-          <div class="feature-icon">📈</div>
-          <h3>Real-time Analytics</h3>
-          <p>Make data-driven decisions with our powerful analytics and reporting features.</p>
-        </div>
+  <section class="bright-future" id="features">
+    <h2 class="section-title">Together, we are creating a <span style="color: var(--purple-primary);">Bright Future.</span></h2>
+    <p class="section-subtitle">JOIN US</p>
+    <div class="feature-grid">
+      <div class="feature-card hover-scale">
+        <h3>Enhance Your Team's Productivity</h3>
+        <p>Improve communication and streamline your workflow with our integrated tools.</p>
+        <button class="feature-btn">Read More</button>
+      </div>
+      <div class="feature-card hover-scale">
+        <h3>Maximize Return on Investment</h3>
+        <p>Get more value with less time and resources through our optimized solutions.</p>
+        <button class="feature-btn">Read More</button>
+      </div>
+      <div class="feature-card hover-scale">
+        <h3>Improve Customer Experience</h3>
+        <p>Deliver exceptional experiences at every step of the customer journey.</p>
+        <button class="feature-btn">Read More</button>
+      </div>
+      <div class="feature-card hover-scale">
+        <h3>Stay Ahead of the Competition</h3>
+        <p>Implement cutting-edge solutions to maintain your competitive advantage.</p>
+        <button class="feature-btn">Read More</button>
       </div>
     </div>
   </section>
 
-  <!-- Features Section -->
-  <section class="section" id="features">
-    <div class="container">
-      <h2 class="section-title">Product Features</h2>
-      <div class="features-grid">
-        <div class="feature-card">
-          <div class="feature-icon">📱</div>
-          <h3>Mobile Friendly</h3>
-          <p>Access your projects on the go with our responsive mobile application.</p>
-        </div>
-        <div class="feature-card">
-          <div class="feature-icon">🔄</div>
-          <h3>Seamless Integration</h3>
-          <p>Connect with your favorite tools and services without any hassle.</p>
-        </div>
-        <div class="feature-card">
-          <div class="feature-icon">👥</div>
-          <h3>Team Collaboration</h3>
-          <p>Work together efficiently with advanced collaboration features.</p>
-        </div>
+  <!-- Product Features Section -->
+  <section class="product-features">
+    <h2 class="section-title">Product Features</h2>
+    <div class="feature-grid">
+      <div class="feature-card hover-scale">
+        <h3>Mobile Friendly</h3>
+        <p>Access your projects on the go with our responsive mobile application.</p>
+        <button class="feature-btn">Read More</button>
+      </div>
+      <div class="feature-card hover-scale">
+        <h3>Seamless Integration</h3>
+        <p>Connect with your favorite tools and services without any hassle.</p>
+        <button class="feature-btn">Read More</button>
+      </div>
+      <div class="feature-card hover-scale">
+        <h3>Team Collaboration</h3>
+        <p>Work together efficiently with advanced collaboration features.</p>
+        <button class="feature-btn">Read More</button>
+      </div>
+      <div class="feature-card hover-scale">
+        <h3>Data Analytics</h3>
+        <p>Make informed decisions with comprehensive data analysis tools.</p>
+        <button class="feature-btn">Read More</button>
       </div>
     </div>
   </section>
 
   <!-- Scalable Business Section -->
-  <section class="section" style="background-color: var(--purple-soft);">
-    <div class="container">
-      <h2 class="section-title">Scale Your Business</h2>
-      <p style="text-align: center; max-width: 700px; margin: 0 auto 3rem;">Our platform grows with your business, providing the tools you need at every stage of your growth journey.</p>
-      <div class="features-grid">
-        <div class="feature-card">
-          <div class="feature-icon">🚀</div>
-          <h3>Fast Onboarding</h3>
-          <p>Get started quickly with our intuitive interface and guided setup process.</p>
-        </div>
-        <div class="feature-card">
-          <div class="feature-icon">💹</div>
-          <h3>Growth Tools</h3>
-          <p>Access powerful tools designed to help your business scale efficiently.</p>
-        </div>
-        <div class="feature-card">
-          <div class="feature-icon">🔧</div>
-          <h3>Customizable</h3>
-          <p>Adapt the platform to fit your specific business needs and workflows.</p>
-        </div>
+  <section class="scalable-business">
+    <h2 class="section-title">Scale Your Business</h2>
+    <p style="text-align: center; max-width: 700px; margin: 0 auto 2rem;">Our platform grows with your business, providing the tools you need at every stage of your growth journey.</p>
+    <div class="feature-grid">
+      <div class="feature-card hover-scale">
+        <h3>Fast Onboarding</h3>
+        <p>Get started quickly with our intuitive interface and guided setup process.</p>
+        <button class="feature-btn">Read More</button>
+      </div>
+      <div class="feature-card hover-scale">
+        <h3>Growth Tools</h3>
+        <p>Access powerful tools designed to help your business scale efficiently.</p>
+        <button class="feature-btn">Read More</button>
+      </div>
+      <div class="feature-card hover-scale">
+        <h3>Customizable</h3>
+        <p>Adapt the platform to fit your specific business needs and workflows.</p>
+        <button class="feature-btn">Read More</button>
+      </div>
+      <div class="feature-card hover-scale">
+        <h3>Support and Training</h3>
+        <p>Get expert help when you need it with our dedicated support team.</p>
+        <button class="feature-btn">Read More</button>
       </div>
     </div>
   </section>
 
   <!-- About Section -->
-  <section class="section about-section" id="about">
-    <div class="container">
-      <h2 class="section-title">About Promptie</h2>
-      <div class="about-content">
-        <div class="about-image"></div>
-        <div class="about-text">
-          <h2>Our Mission</h2>
-          <p>At Promptie, we're dedicated to helping businesses of all sizes achieve their goals through innovative technology solutions. Our team of experts is committed to providing you with the tools you need to succeed in today's competitive market.</p>
-          <p>Founded in 2023, we've already helped hundreds of companies transform their operations and boost their productivity.</p>
-          <a href="#contact" class="cta-button" style="margin-top: 1rem;">Learn More</a>
-        </div>
+  <section class="about" id="about">
+    <div class="about-content">
+      <div class="about-image">
+        <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=800" alt="Team collaborating">
+      </div>
+      <div class="about-text">
+        <span class="about-badge">OUR STORY</span>
+        <h2>Explore our story, values, and<br /> the mission that inspires <span>everything we do</span></h2>
+        <p>We started with a simple idea: make technology work better for people. Today, we're a global team of innovators, creators, and problem-solvers dedicated to transforming how businesses operate.</p>
+        <p>Our mission drives us to create solutions that don't just solve today's challenges, but anticipate tomorrow's opportunities. We believe in technology that empowers, simplifies, and brings people together.</p>
+        <a href="#contact" class="btn btn-primary">Learn More About Us</a>
       </div>
     </div>
   </section>
 
   <!-- Team Section -->
-  <section class="section" id="team">
-    <div class="container">
-      <h2 class="section-title">Our Team</h2>
-      <div class="team-grid">
-        <div class="team-member">
-          <div class="member-image"></div>
-          <div class="member-info">
-            <h3>Sarah Johnson</h3>
-            <div class="member-role">CEO & Founder</div>
-            <p>15+ years experience in software development and business leadership.</p>
-          </div>
+  <section class="team">
+    <h2 class="section-title">Our Team</h2>
+    <div class="team-grid">
+      <div class="team-member">
+        <div class="team-image">
+          <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Sarah Johnson">
         </div>
-        <div class="team-member">
-          <div class="member-image"></div>
-          <div class="member-info">
-            <h3>Michael Chen</h3>
-            <div class="member-role">CTO</div>
-            <p>Former Google engineer with expertise in AI and cloud infrastructure.</p>
-          </div>
+        <div class="team-info">
+          <h3>Sarah Johnson</h3>
+          <div class="team-role">CEO & Founder</div>
+          <p>15+ years experience in software development and business leadership.</p>
         </div>
-        <div class="team-member">
-          <div class="member-image"></div>
-          <div class="member-info">
-            <h3>Emma Rodriguez</h3>
-            <div class="member-role">Head of Design</div>
-            <p>Award-winning designer focused on creating intuitive user experiences.</p>
-          </div>
+      </div>
+      <div class="team-member">
+        <div class="team-image">
+          <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Michael Chen">
         </div>
-        <div class="team-member">
-          <div class="member-image"></div>
-          <div class="member-info">
-            <h3>David Kim</h3>
-            <div class="member-role">Head of Customer Success</div>
-            <p>Dedicated to ensuring clients achieve their business objectives.</p>
-          </div>
+        <div class="team-info">
+          <h3>Michael Chen</h3>
+          <div class="team-role">CTO</div>
+          <p>Former Google engineer with expertise in AI and cloud infrastructure.</p>
+        </div>
+      </div>
+      <div class="team-member">
+        <div class="team-image">
+          <img src="https://images.unsplash.com/photo-1534751516642-a1af1ef26a56?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Emma Rodriguez">
+        </div>
+        <div class="team-info">
+          <h3>Emma Rodriguez</h3>
+          <div class="team-role">Head of Design</div>
+          <p>Award-winning designer focused on creating intuitive user experiences.</p>
+        </div>
+      </div>
+      <div class="team-member">
+        <div class="team-image">
+          <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="David Kim">
+        </div>
+        <div class="team-info">
+          <h3>David Kim</h3>
+          <div class="team-role">Head of Customer Success</div>
+          <p>Dedicated to ensuring clients achieve their business objectives.</p>
         </div>
       </div>
     </div>
   </section>
 
   <!-- Testimonials Section -->
-  <section class="section testimonials-section">
-    <div class="container">
-      <h2 class="section-title">What Our Clients Say</h2>
-      <div class="testimonial-slider">
-        <div class="testimonial-card">
-          <div class="testimonial-text">
-            "Promptie has transformed the way our team works. We've seen a 30% increase in productivity since implementing their solution."
+  <section class="testimonials">
+    <h2 class="section-title">What Our Clients Say</h2>
+    <div class="testimonial-slider">
+      <div class="testimonial-card">
+        <div class="testimonial-text">
+          "Promptie has transformed the way our team works. We've seen a 30% increase in productivity since implementing their solution."
+        </div>
+        <div class="testimonial-author">
+          <div class="author-avatar">
+            <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Jessica Williams">
           </div>
-          <div class="testimonial-author">
-            <div class="author-avatar"></div>
-            <div class="author-info">
-              <div class="author-name">Jessica Williams</div>
-              <div class="author-title">Marketing Director, TechCorp</div>
-            </div>
+          <div class="author-info">
+            <div class="author-name">Jessica Williams</div>
+            <div class="author-title">Marketing Director, TechCorp</div>
           </div>
         </div>
-        <div class="testimonial-card">
-          <div class="testimonial-text">
-            "The customer support team at Promptie is exceptional. They're always available to help and have made our transition seamless."
+      </div>
+      <div class="testimonial-card">
+        <div class="testimonial-text">
+          "The customer support team at Promptie is exceptional. They're always available to help and have made our transition seamless."
+        </div>
+        <div class="testimonial-author">
+          <div class="author-avatar">
+            <img src="https://images.unsplash.com/photo-1566492031773-4f4e44671857?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Robert Martinez">
           </div>
-          <div class="testimonial-author">
-            <div class="author-avatar"></div>
-            <div class="author-info">
-              <div class="author-name">Robert Martinez</div>
-              <div class="author-title">CIO, Global Enterprises</div>
-            </div>
+          <div class="author-info">
+            <div class="author-name">Robert Martinez</div>
+            <div class="author-title">CIO, Global Enterprises</div>
           </div>
         </div>
       </div>
@@ -683,45 +977,34 @@
   </section>
 
   <!-- Contact Section -->
-  <section class="section" id="contact">
-    <div class="container">
-      <h2 class="section-title">Contact Us</h2>
-      <div class="contact-container">
-        <div class="contact-info">
-          <h3>Get in Touch</h3>
-          <p>Have questions about our product or services? Our team is here to help you.</p>
-          <div class="contact-item">
-            <div class="contact-icon">📧</div>
-            <div>info@promptie.com</div>
-          </div>
-          <div class="contact-item">
-            <div class="contact-icon">📞</div>
-            <div>+1 (555) 123-4567</div>
-          </div>
-          <div class="contact-item">
-            <div class="contact-icon">📍</div>
-            <div>123 Tech Street, San Francisco, CA 94107</div>
-          </div>
-        </div>
-        <div class="contact-form">
-          <h3>Send us a Message</h3>
-          <form>
+  <section class="contact" id="contact">
+    <div class="contact-container">
+      <div class="contact-form">
+        <h2>Have Questions?<br /><span>Contact Us</span></h2>
+        <p>We're here to help with any questions you might have about our products, services, or how we can support your business goals.</p>
+        <form>
+          <div class="form-row">
             <div class="form-group">
-              <label for="name">Name</label>
-              <input type="text" id="name" placeholder="Your name">
+              <label for="name">Your Name</label>
+              <input type="text" id="name" placeholder="John Doe">
             </div>
             <div class="form-group">
-              <label for="email">Email</label>
-              <input type="email" id="email" placeholder="Your email">
+              <label for="email">Email Address</label>
+              <input type="email" id="email" placeholder="john@example.com">
             </div>
-            <div class="form-group">
-              <label for="message">Message</label>
-              <textarea id="message" placeholder="Your message"></textarea>
-            </div>
-            <button type="submit" class="cta-button">Send Message</button>
-          </form>
-        </div>
+          </div>
+          <div class="form-group">
+            <label for="subject">Subject</label>
+            <input type="text" id="subject" placeholder="How can we help?">
+          </div>
+          <div class="form-group">
+            <label for="message">Message</label>
+            <textarea id="message" placeholder="Your message here..."></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary">Send Message</button>
+        </form>
       </div>
+      <div class="contact-image"></div>
     </div>
   </section>
 
@@ -730,39 +1013,100 @@
     <div class="footer-container">
       <div class="footer-section">
         <div class="footer-logo">Promptie</div>
-        <p>Boosting your project's speed and efficiency with innovative solutions.</p>
+        <p>Boost your project's speed and efficiency with our innovative tools. We help modern teams streamline their workflow.</p>
+        <div class="newsletter">
+          <p>Subscribe to our newsletter</p>
+          <div class="newsletter-input">
+            <input type="email" placeholder="Your email">
+            <button class="btn btn-primary">Subscribe</button>
+          </div>
+        </div>
       </div>
       <div class="footer-section">
-        <h3>Pages</h3>
+        <h3>Products</h3>
         <ul class="footer-links">
-          <li><a href="#home">Home</a></li>
           <li><a href="#features">Features</a></li>
+          <li><a href="#">Solutions</a></li>
+          <li><a href="#">Pricing</a></li>
+          <li><a href="#">Updates</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h3>Company</h3>
+        <ul class="footer-links">
           <li><a href="#about">About</a></li>
-          <li><a href="#team">Team</a></li>
-          <li><a href="#contact">Contact</a></li>
+          <li><a href="#">Careers</a></li>
+          <li><a href="#">Blog</a></li>
+          <li><a href="#">Press</a></li>
         </ul>
       </div>
       <div class="footer-section">
-        <h3>Legal</h3>
+        <h3>Contact</h3>
         <ul class="footer-links">
-          <li><a href="#">Privacy Policy</a></li>
-          <li><a href="#">Terms of Service</a></li>
-          <li><a href="#">Cookie Policy</a></li>
-        </ul>
-      </div>
-      <div class="footer-section">
-        <h3>Connect</h3>
-        <ul class="footer-links">
-          <li><a href="#">Twitter</a></li>
-          <li><a href="#">LinkedIn</a></li>
-          <li><a href="#">Facebook</a></li>
-          <li><a href="#">Instagram</a></li>
+          <li><a href="#contact">Contact Us</a></li>
+          <li><a href="#">Support</a></li>
+          <li><a href="#">Privacy</a></li>
+          <li><a href="#">Terms</a></li>
         </ul>
       </div>
     </div>
-    <div class="copyright">
-      &copy; 2025 Promptie. All rights reserved.
+    <div class="footer-bottom">
+      <div class="copyright">
+        &copy; 2025 Promptie. All rights reserved.
+      </div>
+      <div class="social-links">
+        <a href="#">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
+            <path d="M5.026 15c6.038 0 9.341-5.003 9.341-9.334 0-.14 0-.282-.006-.422A6.685 6.685 0 0 0 16 3.542a6.658 6.658 0 0 1-1.889.518 3.301 3.301 0 0 0 1.447-1.817 6.533 6.533 0 0 1-2.087.793A3.286 3.286 0 0 0 7.875 6.03a9.325 9.325 0 0 1-6.767-3.429 3.289 3.289 0 0 0 1.018 4.382A3.323 3.323 0 0 1 .64 6.575v.045a3.288 3.288 0 0 0 2.632 3.218 3.203 3.203 0 0 1-.865.115 3.23 3.23 0 0 1-.614-.057 3.283 3.283 0 0 0 3.067 2.277A6.588 6.588 0 0 1 .78 13.58a6.32 6.32 0 0 1-.78-.045A9.344 9.344 0 0 0 5.026 15z"/>
+          </svg>
+        </a>
+        <a href="#">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
+            <path d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951z"/>
+          </svg>
+        </a>
+        <a href="#">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
+            <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"/>
+          </svg>
+        </a>
+        <a href="#">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
+            <path d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854V1.146zm4.943 12.248V6.169H2.542v7.225h2.401zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248-.822 0-1.359.54-1.359 1.248 0 .694.521 1.248 1.327 1.248h.016zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016a5.54 5.54 0 0 1 .016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225h2.4z"/>
+          </svg>
+        </a>
+      </div>
     </div>
   </footer>
+
+  <script>
+    // Mobile menu toggle
+    document.getElementById('menuButton').addEventListener('click', function() {
+      const mobileMenu = document.getElementById('mobileMenu');
+      mobileMenu.classList.toggle('active');
+    });
+
+    // Smooth scrolling for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const targetId = this.getAttribute('href');
+        const targetElement = document.querySelector(targetId);
+        
+        if (targetElement) {
+          window.scrollTo({
+            top: targetElement.offsetTop - 80,
+            behavior: 'smooth'
+          });
+        }
+        
+        // Close mobile menu if open
+        const mobileMenu = document.getElementById('mobileMenu');
+        if (mobileMenu.classList.contains('active')) {
+          mobileMenu.classList.remove('active');
+        }
+      });
+    });
+  </script>
 </body>
 </html>
